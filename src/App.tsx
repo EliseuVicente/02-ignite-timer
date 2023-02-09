@@ -1,9 +1,12 @@
-import { useState } from 'react'
-
-function App() {
+import { Router } from "./Router"
+import {BrowserRouter} from 'react-router-dom'
+export function App() {
 
   return (
-   <div>Ola</div>
+
+    <BrowserRouter>
+      <Router />
+   </BrowserRouter>
   )
 }
 
