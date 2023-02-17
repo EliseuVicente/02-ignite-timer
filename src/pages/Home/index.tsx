@@ -5,6 +5,7 @@ import * as zod from 'zod'
 
 import { CountdownContainer, FormContainer, HomeContainer, MinutesAmountInput, Separator, StartCountdownButton, TaskInput } from "./style"
 
+
 export function Home(){
     
     const newCycleFormValidationSchema = zod.object({
@@ -14,10 +15,18 @@ export function Home(){
 
     const { register, handleSubmit, watch } = useForm({
         resolver: zodResolver(newCycleFormValidationSchema),
+        defaultValues: {
+            task: '',
+            minutesAmount: 0,
+        }
     })
 
-    function handleCreateNewCycle(data: any){
-        
+    /* exportando a tipagem inferida pelo Zod da minha Task e minutesAmount */
+
+   type NewCycleFormData = zod.infer<typeof newCycleFormValidationSchema>
+
+    function handleCreateNewCycle(data: NewCycleFormData ){
+        console.log(data)
     }
 
 
