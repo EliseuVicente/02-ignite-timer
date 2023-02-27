@@ -25,4 +25,4 @@ export const Separator = styled.div`
     overflow: hidden;
     display: flex;
     justify-content: center;
-`
+`;
