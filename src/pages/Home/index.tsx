@@ -65,7 +65,7 @@ export function Home(){
         setCycles((state) => [...state, newCycle])
         setActiveCycleId(newCycle.id)
         setAmountSecondsPassed(0)
-
+        
         reset()
 
     }
@@ -84,11 +84,11 @@ export function Home(){
     }
 
     function setSecondsPassed(seconds: number){
-        setSecondsPassed(seconds)
+        setAmountSecondsPassed(seconds)
     }
 
     function markCurrentCycleAsFinished() {
-        setCycles( state =>
+        setCycles( (state) =>
             state.map((cycle) => {
             if (cycle.id === activeCycleId) {
                 return { ...cycle, finishedDate: new Date() }
@@ -111,7 +111,7 @@ export function Home(){
                  activeCycleId, 
                  markCurrentCycleAsFinished, 
                  amountSecondsPassed,
-                 setSecondsPassed
+                 setSecondsPassed,
                  }}>
 
                 <FormProvider {...newCycleForm}>
@@ -119,8 +119,7 @@ export function Home(){
                 </FormProvider>
                 <Countdown />
               </CyclesContext.Provider>
-            </form>
-
+        
                 { activeCycle ? (
                     <StopCountdownButton onClick={handleInterruptCycle} disabled={isSubmitDisabled} type="button">
                     <HandPalm size={24}/>
@@ -132,6 +131,7 @@ export function Home(){
                     Comerçar
                 </StartCountdownButton>
                 )}
+                </form>
         </HomeContainer>
     )
 }
